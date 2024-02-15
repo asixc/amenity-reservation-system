@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities Reservation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+<div class="min-h-screen flex flex-col">
+    <header class="bg-blue-800 text-white p-4 text-xl">
+        Amenities Reservation System
+    </header>
+    <main class="flex-grow container mx-auto px-4 py-2">
+        <h1 class="text-2xl font-semibold my-4">Welcome Jose Alberto Lorenzo</h1>
+        <div class="bg-white shadow-md rounded my-6">
+            <table class="text-left w-full border-collapse">
+                <thead>
+                <tr>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Amenity</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Start Time</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">End Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">GYM</td>
+                    <td class="py-4 px-6 border-b border-grey-light">2024-05-01</td>
+                    <td class="py-4 px-6 border-b border-grey-light">11:30</td>
+                    <td class="py-4 px-6 border-b border-grey-light">12:30</td>
+                </tr>
+                <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">SAUNA</td>
+                    <td class="py-4 px-6 border-b border-grey-light">2024-05-01</td>
+                    <td class="py-4 px-6 border-b border-grey-light">11:00</td>
+                    <td class="py-4 px-6 border-b border-grey-light">12:00</td>
+                </tr>
+                <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">POOL</td>
+                    <td class="py-4 px-6 border-b border-grey-light">2024-05-01</td>
+                    <td class="py-4 px-6 border-b border-grey-light">10:00</td>
+                    <td class="py-4 px-6 border-b border-grey-light">11:11</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3 focus:outline-none focus:shadow-outline" type="button">
+            Create Reservation
+        </button>
+    </main>
+    <footer class="bg-blue-800 text-white p-4 text-center">
+        Log out
+    </footer>
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+        <!-- Modal Content -->
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <!-- Add margin if you want to see some of the overlay behind the modal-->
+            <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Create Reservation</p>
+                    <div class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M12.45 11.292l5.797-5.797-1.158-1.158-5.797 5.798-5.798-5.798-1.158 1.158 5.798 5.797-5.798 5.798 1.158 1.158 5.798-5.798 5.797 5.798 1.158-1.158z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <!--Body-->
+                <div class="my-5">
+                    <form action="#">
+                        <!-- ... other form elements ... -->
+                    </form>
+                </div>
+                <!--Footer-->
+                <div class="flex justify-end pt-2">
+                    <button class="modal-close px-4 bg-gray-500 p-3 rounded-lg text-white hover:bg-gray-400">Cancel</button>
+                    <button class="px-4 bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-400">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Modal Background -->
+
+    <script>
+        // Function to make the modal work
+        function toggleModal() {
+            const body = document.querySelector('body');
+            const modal = document.querySelector('.modal');
+            modal.classList.toggle('opacity-0');
+            modal.classList.toggle('pointer-events-none');
+            body.classList.toggle('modal-active');
+        }
+
+        // Add event listeners for open/close buttons
+        const modalOpenButton = document.querySelector('.modal-open');
+        const modalCloseButtons = document.querySelectorAll('.modal-close');
+        modalOpenButton.addEventListener('click', toggleModal);
+        modalCloseButtons.forEach((button) => {
+            button.addEventListener('click', toggleModal);
+        });
+
+        // Close modal if clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === document.querySelector('.modal')) {
+                toggleModal();
+            }
+        });
+    </script>
+
+
+</div>
+
+
